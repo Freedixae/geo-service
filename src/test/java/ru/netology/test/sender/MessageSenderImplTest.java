@@ -28,12 +28,7 @@ public class MessageSenderImplTest {
         resultMap.put(MessageSenderImpl.IP_ADDRESS_HEADER, "172.0.32.11");
         String result = resultMessage.send(resultMap);
         //when
-        GeoServiceImpl geoService = new GeoServiceImpl();
-        LocalizationServiceImpl localizationService = new LocalizationServiceImpl();
-        MessageSenderImpl expectedMessage = new MessageSenderImpl(geoService, localizationService);
-        Map<String, String> expectedMap = new HashMap<>();
-        expectedMap.put(MessageSenderImpl.IP_ADDRESS_HEADER, "172.");
-        String expected = expectedMessage.send(expectedMap);
+        String expected = "Добро пожаловать";
         //then
         Assertions.assertEquals(result, expected);
     }
@@ -51,12 +46,7 @@ public class MessageSenderImplTest {
         headers.put(MessageSenderImpl.IP_ADDRESS_HEADER, "96.44.183.149");
         String result =  resultMessage.send(headers);
         //when
-        GeoService geoService = new GeoServiceImpl();
-        LocalizationService localizationService = new LocalizationServiceImpl();
-        MessageSender messageSender = new MessageSenderImpl(geoService, localizationService);
-        Map<String, String> expected = new HashMap<>();
-        expected.put(MessageSenderImpl.IP_ADDRESS_HEADER, "96.");
-        String exepted = messageSender.send(expected);
+        String exepted = "Welcome";
         //then
         Assertions.assertEquals(result, exepted);
     }
