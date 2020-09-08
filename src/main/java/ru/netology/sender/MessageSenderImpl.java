@@ -1,6 +1,7 @@
 package ru.netology.sender;
 
 import java.util.Map;
+import java.util.Objects;
 
 import ru.netology.entity.Country;
 import ru.netology.entity.Location;
@@ -27,5 +28,19 @@ public class MessageSenderImpl implements MessageSender {
             return localizationService.locale(location.getCountry());
         }
         return localizationService.locale(Country.USA);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MessageSenderImpl that = (MessageSenderImpl) o;
+        return Objects.equals(geoService, that.geoService) &&
+                Objects.equals(localizationService, that.localizationService);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(geoService, localizationService);
     }
 }
